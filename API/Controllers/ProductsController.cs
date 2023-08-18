@@ -1,4 +1,5 @@
 using Core.Entities;
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,10 +10,12 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-        private readonly StoreContext _context;
-        public ProductsController(StoreContext context)
+        private readonly IProductRepository _repository;
+
+        public ProductsController(IProductRepository repository)
         {
-            _context = context;
+            _repository = repository;
+
         }
 
         [HttpGet]
@@ -20,7 +23,7 @@ namespace API.Controllers
         {
             try
             {
-                var products = await _context.Products.ToListAsync();
+                var products = await _repository.GetProductsAsync();
 
                 return Ok(products);
             }
@@ -31,20 +34,43 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int? id)
+        public async Task<ActionResult<Product>> GetProduct(int id)
         {
             try
             {
-                if (id == null)
-                {
-                    throw new Exception("Unable to find this product");
-                }
-
-                var product = await _context.Products
-                    .Where(x => x.Id == id)
-                    .FirstOrDefaultAsync();
+                var product = await _repository.GetProductByIdAsync(id);
 
                 return Ok(product);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+            }
+        }
+
+        [HttpGet("brands")]
+        public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
+        {
+            try
+            {
+                var brands = await _repository.GetProductsBrandsAsync();
+
+                return Ok(brands);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+            }
+        }
+
+        [HttpGet("types")]
+        public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductTypes()
+        {
+            try
+            {
+                var types = await _repository.GetProductsTypesAsync();
+
+                return Ok(types);
             }
             catch (Exception ex)
             {
