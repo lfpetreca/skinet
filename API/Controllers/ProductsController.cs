@@ -1,8 +1,7 @@
 using Core.Entities;
 using Core.Interfaces;
-using Infrastructure.Data;
+using Core.Specifications;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -10,12 +9,16 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-        private readonly IProductRepository _repository;
 
-        public ProductsController(IProductRepository repository)
+        private readonly IGenericRepository<Product> _productsRepo;
+        private readonly IGenericRepository<ProductBrand> _productBrandsRepo;
+        private readonly IGenericRepository<ProductType> _productTypesRepo;
+
+        public ProductsController(IGenericRepository<Product> productsRepo, IGenericRepository<ProductBrand> productBrandsRepo, IGenericRepository<ProductType> productTypesRepo)
         {
-            _repository = repository;
-
+            _productTypesRepo = productTypesRepo;
+            _productBrandsRepo = productBrandsRepo;
+            _productsRepo = productsRepo;
         }
 
         [HttpGet]
@@ -23,7 +26,8 @@ namespace API.Controllers
         {
             try
             {
-                var products = await _repository.GetProductsAsync();
+                var spec = new ProductsWithTypesAndBrandsSpecification();
+                var products = await _productsRepo.GetListWithSpecAsync(spec);
 
                 return Ok(products);
             }
@@ -38,7 +42,8 @@ namespace API.Controllers
         {
             try
             {
-                var product = await _repository.GetProductByIdAsync(id);
+                var spec = new ProductsWithTypesAndBrandsSpecification(id);
+                var product = await _productsRepo.GetEntityWithSpec(spec);
 
                 return Ok(product);
             }
@@ -53,7 +58,7 @@ namespace API.Controllers
         {
             try
             {
-                var brands = await _repository.GetProductsBrandsAsync();
+                var brands = await _productBrandsRepo.GetListAllAsync();
 
                 return Ok(brands);
             }
@@ -68,7 +73,7 @@ namespace API.Controllers
         {
             try
             {
-                var types = await _repository.GetProductsTypesAsync();
+                var types = await _productTypesRepo.GetListAllAsync();
 
                 return Ok(types);
             }

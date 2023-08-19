@@ -14,7 +14,9 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 var app = builder.Build();
 
@@ -40,7 +42,7 @@ var logger = services.GetRequiredService<ILogger<Program>>();
 try
 {
     await context.Database.MigrateAsync();
-    
+
     //SeedData
     await StoreContextSeed.SeedAsync(context);
 }
