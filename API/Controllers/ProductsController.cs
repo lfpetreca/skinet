@@ -1,3 +1,5 @@
+using API.Dtos;
+using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
@@ -13,23 +15,26 @@ namespace API.Controllers
         private readonly IGenericRepository<Product> _productsRepo;
         private readonly IGenericRepository<ProductBrand> _productBrandsRepo;
         private readonly IGenericRepository<ProductType> _productTypesRepo;
+        private readonly IMapper _mapper;
 
-        public ProductsController(IGenericRepository<Product> productsRepo, IGenericRepository<ProductBrand> productBrandsRepo, IGenericRepository<ProductType> productTypesRepo)
+        public ProductsController(IGenericRepository<Product> productsRepo, IGenericRepository<ProductBrand> productBrandsRepo, IGenericRepository<ProductType> productTypesRepo, IMapper mapper)
         {
+            _mapper = mapper;
             _productTypesRepo = productTypesRepo;
             _productBrandsRepo = productBrandsRepo;
             _productsRepo = productsRepo;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProducts()
+        public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProducts()
         {
             try
             {
                 var spec = new ProductsWithTypesAndBrandsSpecification();
                 var products = await _productsRepo.GetListWithSpecAsync(spec);
 
-                return Ok(products);
+                IReadOnlyList<ProductToReturnDto> result = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products);
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -38,14 +43,15 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<ProductToReturnDto>> GetProduct(int id)
         {
             try
             {
                 var spec = new ProductsWithTypesAndBrandsSpecification(id);
                 var product = await _productsRepo.GetEntityWithSpec(spec);
 
-                return Ok(product);
+                ProductToReturnDto result = _mapper.Map<Product, ProductToReturnDto>(product);
+                return Ok(result);
             }
             catch (Exception ex)
             {

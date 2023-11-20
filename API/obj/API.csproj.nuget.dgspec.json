@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\API\\API.csproj": {}
+    "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\API\\API.csproj": {
+    "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\API\\API.csproj",
+        "projectUniqueName": "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\API\\API.csproj",
+        "projectPath": "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Luis Fernando\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\API\\obj\\",
+        "outputPath": "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Luis Fernando\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -21,16 +21,14 @@
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.307\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Infrastructure\\Infrastructure.csproj"
+              "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -45,6 +43,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.7, )"
@@ -79,18 +81,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Core\\Core.csproj": {
+    "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Core\\Core.csproj",
+        "projectUniqueName": "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Core\\Core.csproj",
+        "projectPath": "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\Luis Fernando\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Core\\obj\\",
+        "outputPath": "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Luis Fernando\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -134,18 +136,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Infrastructure\\Infrastructure.csproj": {
+    "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Luis Fernando\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Infrastructure\\obj\\",
+        "outputPath": "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Luis Fernando\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -162,8 +164,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Core\\Core.csproj"
+              "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Core\\Core.csproj": {
+                "projectPath": "c:\\Users\\Luis Fernando\\Documents\\codes\\skinet\\Core\\Core.csproj"
               }
             }
           }
@@ -205,7 +207,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
